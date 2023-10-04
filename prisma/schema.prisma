@@ -10,29 +10,25 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model Paciente {
-  id    Int     @id @default(autoincrement())
-  nomePc String
-  senha Int
-  usuario String
+  id       Int      @id @default(autoincrement())
+  nomePcnte String
+  senha     Int
+  usuario   String
 }
-
 model Secretaria {
-  id        Int     @id @default(autoincrement())
-  nome     String
-  RG        Int
+  id   Int    @id @default(autoincrement())
+  nome String
+  RG   Int
 }
-
 model Consulta {
-  id Int     @id @default(autoincrement())
-  data  DateTime
-  nomePc String
-  nomeDent String
+  id        Int      @id @default(autoincrement())
+  data      DateTime
+  nomePcnte String
+  nomeDents String
 }
-
 model Agenda {
-  id Int     @id @default(autoincrement())
-  data  DateTime
-  nomePc     String
+  id       Int      @id @default(autoincrement())
+  data     DateTime
+  nomePcnt String
 }

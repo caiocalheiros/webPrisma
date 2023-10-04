@@ -10,25 +10,35 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+
 model Paciente {
-  id       Int      @id @default(autoincrement())
-  nomePcnte String
-  senha     Int
-  usuario   String
-}
+  id Int     @id @default(autoincrement())
+  nome String 
+  senha String
+  user String @unique
+  consultas Consulta[]
+} 
+
 model Secretaria {
-  id   Int    @id @default(autoincrement())
+  id Int     @id @default(autoincrement())
   nome String
-  RG   Int
+  RG Int      @unique
+  consultas Consulta[]
 }
+
 model Consulta {
-  id        Int      @id @default(autoincrement())
-  data      DateTime
-  nomePcnte String
-  nomeDents String
+  id Int     @id @default(autoincrement())
+  data DateTime
+  nomePaciente String
+  nomeDentista String
+  paciente Paciente @relation(fields: [pacienteId], references:  [id])
+  pacienteId Int
+  secretaria Secretaria @relation(fields: [secretariaId], references: [id])
+  secretariaId Int
 }
+
 model Agenda {
-  id       Int      @id @default(autoincrement())
-  data     DateTime
-  nomePcnt String
+  id Int     @id @default(autoincrement())
+  data DateTime
+  nomePaciente String
 }
